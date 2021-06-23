@@ -1,5 +1,3 @@
-const useTemplate = (a: number, b: number): number => {
-  return a + b;
-};
-
-export { useTemplate };
+export { convertString, convertStrings } from './convertString';
+export { tests } from './tests';
+export type { TestData } from './tests';

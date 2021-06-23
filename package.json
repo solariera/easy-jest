@@ -1,8 +1,8 @@
 {
-  "name": "@solariera/template-npm-package",
+  "name": "@solariera/easy-jest",
   "version": "0.0.0",
   "private": false,
-  "description": "This is npm package template",
+  "description": "Easy jest package with convertString(s)",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
@@ -10,9 +10,7 @@
     "types"
   ],
   "keywords": [
-    "template",
-    "npm",
-    "package"
+    "jest"
   ],
   "scripts": {
     "test": "jest",
@@ -25,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solariera/template-npm-package.git"
+    "url": "git+https://github.com/solariera/easy-jest.git"
   },
   "publishConfig": {
     "access": "public"
@@ -33,9 +31,9 @@
   "author": "Solariera <always@solariera.com> (https://github.com/solariera)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/solariera/template-npm-package/issues"
+    "url": "https://github.com/solariera/easy-jest/issues"
   },
-  "homepage": "https://github.com/solariera/template-npm-package#readme",
+  "homepage": "https://github.com/solariera/easy-jest#readme",
   "devDependencies": {
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.6",
