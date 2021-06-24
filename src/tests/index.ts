@@ -1,4 +1,4 @@
-import { convertString, convertStrings } from '../convertString';
+import { convertString, convertStrings } from '../convert-string';
 
 export type TestData<T extends (...args: any) => any> = {
   id?: string;
@@ -12,11 +12,14 @@ const tests = <T extends (...args: any) => any>(fn: T, data: TestData<T>[]): voi
     const { id, params, ret, mode } = data[i];
     const parameters: string[] = convertStrings(params);
     const returnValue: string = convertString(ret);
+    const no = i + 1;
     const description: string = [
-      ' ' + i + (id ? ': ' + id : ''),
+      ' ' + no + (id ? ': ' + id : ''),
       'test         : ' + fn.name,
       '@params      : ' + parameters.join(', '),
+      '@params type : ' + params.map((param) => typeof param).join(', '),
       '@return      : ' + returnValue,
+      '@return type : ' + typeof returnValue,
       '',
     ].join('\n');
 
