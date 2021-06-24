@@ -9,6 +9,7 @@
     "source.fixAll.eslint": true
   },
   "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "files.trimTrailingWhitespace": false
   },
   "markdownlint.config": {

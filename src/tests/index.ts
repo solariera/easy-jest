@@ -13,16 +13,16 @@ const tests = <T extends (...args: any) => any>(fn: T, data: TestData<T>[]): voi
     const parameters: string[] = convertStrings(params);
     const returnValue: string = convertString(ret);
     const description: string = [
-      ' ' + id || '',
+      ' ' + i + (id ? ': ' + id : ''),
       'test         : ' + fn.name,
       '@params      : ' + parameters.join(', '),
       '@return      : ' + returnValue,
       '',
     ].join('\n');
 
-    if (mode === 'toBe') test(description, () => expect(fn(...params)).toBe(ret));
     if (mode === 'toStrictEqual') test(description, () => expect(fn(...params)).toStrictEqual(ret));
-    if (mode === 'toEqual' || mode === undefined) test(description, () => expect(fn(...params)).toEqual(ret));
+    if (mode === 'toEqual') test(description, () => expect(fn(...params)).toEqual(ret));
+    if (mode === 'toBe' || !mode) test(description, () => expect(fn(...params)).toBe(ret));
   }
 };
 
