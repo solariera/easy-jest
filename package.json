@@ -1,6 +1,6 @@
 {
   "name": "@solariera/easy-jest",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "description": "Easy jest package with convertString(s)",
   "main": "./lib/index.js",
