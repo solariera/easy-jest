@@ -1,6 +1,4 @@
 coverage/
-dist/
-lib/
 Podfile.lock
 *.code-workspace
 yarn.lock

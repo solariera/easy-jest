@@ -11,3 +11,4 @@ src/
 .prettierrc.yml
 .yarnrc
 tsconfig.json
+.spec.ts
