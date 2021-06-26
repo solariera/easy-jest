@@ -2,16 +2,26 @@
   "name": "@solariera/easy-jest",
   "version": "0.0.2",
   "description": "Easy jest package with convertString",
+  "author": "Solariera <always@solariera.com> (https://github.com/solariera)",
+  "license": "MIT",
+  "keywords": [
+    "jest"
+  ],
+  "homepage": "https://github.com/solariera/easy-jest#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solariera/easy-jest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/solariera/easy-jest/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
     "lib"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "keywords": [
-    "jest"
   ],
   "scripts": {
     "test": "jest",
@@ -23,16 +33,6 @@
     "build:clean": "yarn clean && yarn ts-declaration ",
     "prepare": "yarn build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/solariera/easy-jest.git"
-  },
-  "author": "Solariera <always@solariera.com> (https://github.com/solariera)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/solariera/easy-jest/issues"
-  },
-  "homepage": "https://github.com/solariera/easy-jest#readme",
   "devDependencies": {
     "@jest/types": "^27.0.2",
     "@types/eslint": "^7.2.13",
