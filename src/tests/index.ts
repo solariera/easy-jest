@@ -1,4 +1,10 @@
 import { convertString, convertStrings } from '../convert-string';
+import { ArrayCompare } from './types/array';
+import { BooleanCompare } from './types/boolean';
+import { FloatCompare } from './types/float';
+import { GeneralCompare } from './types/general';
+import { NumberCompare } from './types/number';
+import { StringCompare } from './types/string';
 import { ut } from './ut';
 
 export type TestData<T extends (...args: any) => any> =
@@ -9,47 +15,11 @@ export type TestData<T extends (...args: any) => any> =
   | StringCompare<T>
   | ArrayCompare<T>;
 
-type Common<T extends (...args: any) => any> = {
-  id?: string;
-  params: [...Parameters<T>];
-};
-
-type GeneralMode = 'toBe' | 'not.toBe' | 'toEqual' | 'not.toEqual';
-type GeneralCompare<T extends (...args: any) => any> = Common<T> & {
-  mode?: GeneralMode;
-  ret: ReturnType<T>;
-};
-
-type BooleanMode = 'toBeNull' | 'toBeUndefined' | 'toBeDefined' | 'toBeTruthy' | 'toBeFalsy';
-type BooleanCompare<T extends (...args: any) => any> = Common<T> & {
-  mode: BooleanMode;
-  ret?: undefined;
-};
-
-type NumberMode = 'toBeGreaterThan' | 'toBeGreaterThanOrEqual' | 'toBeLessThan' | 'toBeLessThanOrEqual';
-type NumberCompare<T extends (...args: any) => any> = Common<T> & {
-  mode: NumberMode;
-  ret: number | bigint;
-};
-
-type FloatMode = 'toBeCloseTo';
-type FloatCompare<T extends (...args: any) => any> = Common<T> & {
-  mode: FloatMode;
-  ret: number;
-};
-
-type StringMode = 'toMatch' | 'not.toMatch';
-type StringCompare<T extends (...args: any) => any> = Common<T> & {
-  mode: StringMode;
-  ret: RegExp;
-};
-
-type ArrayMode = 'toContain' | 'not.toContain';
-type ArrayCompare<T extends (...args: any) => any> = Common<T> & {
-  mode: ArrayMode;
-  ret: unknown;
-};
-
+/**
+ * tests
+ * @param fn
+ * @param data
+ */
 const tests = <T extends (...args: any) => any>(fn: T, data: TestData<T>[]): void => {
   for (let i = 0; i < data.length; i++) {
     const { id, params, ret, mode = 'toBe' } = data[i];
@@ -67,7 +37,7 @@ const tests = <T extends (...args: any) => any>(fn: T, data: TestData<T>[]): voi
       '',
     ].join('\n');
 
-    ut<T>(fn, description, params, mode, ret);
+    ut(fn, description, params, mode, ret);
   }
 };
 

@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "commonjs",
-    "lib": ["dom", "esnext"],
-    "jsx": "react-jsx",
+    "module": "esnext",
     "declaration": true,
     "outDir": "lib",
     "isolatedModules": true,
@@ -15,6 +13,6 @@
     "baseUrl": "./src/",
     "paths": { "~/*": ["*"] }
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["src/**/*.spec.ts"]
 }

@@ -7,24 +7,25 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "jest"
   ],
   "scripts": {
     "test": "jest",
-    "test:watch": "jest ---watch",
     "test:cov": "jest ---watch --coverage",
     "typesync": "typesync || :",
     "clean": "rm -rf lib/",
-    "build": "yarn clean && tsc",
-    "prepare": "npm run build"
+    "ts-declaration": "tsc --declaration --outDir lib",
+    "build": "yarn ts-declaration",
+    "build:clean": "yarn clean && yarn ts-declaration ",
+    "prepare": "yarn build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/solariera/easy-jest.git"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "author": "Solariera <always@solariera.com> (https://github.com/solariera)",
   "license": "MIT",
@@ -38,6 +39,7 @@
     "@types/jest": "^26.0.23",
     "@types/prettier": "^2.3.0",
     "@typescript-eslint/parser": "^4.28.0",
+    "codecov": "3.8.2",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "jest": "^27.0.5",
