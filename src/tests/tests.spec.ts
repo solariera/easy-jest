@@ -1,7 +1,7 @@
 import { tests, TestData } from '.';
 
 type Options = { number?: number; string?: string; regexp?: RegExp; array?: unknown[] };
-const fn = (situation: string, option?: Options) => {
+const fn = (situation?: string, option?: Options) => {
   if (situation === 'undefined') return undefined;
   if (situation === 'null') return null;
   if (situation === 'truthy') return 'yes';
@@ -10,10 +10,11 @@ const fn = (situation: string, option?: Options) => {
   if (situation === 'string') return option?.string;
   if (situation === 'regexp') return option?.regexp;
   if (situation === 'array') return option?.array;
+  return 'default';
 };
 
 const data: TestData<typeof fn>[] = [
-  { mode: 'toBeDefined', params: ['null'] },
+  { params: [], ret: 'default' },
   { id: 'toBeNull', mode: 'toBeNull', params: ['null'] },
   { id: 'toBeUndefined', mode: 'toBeUndefined', params: ['undefined'] },
   { id: 'toBeTruthy', mode: 'toBeTruthy', params: ['truthy'] },
