@@ -11,7 +11,7 @@ const data: TestData<typeof fn>[] = [
   { id: 'number - 0', params: [0], ret: '0', mode: 'toBe' },
   { id: 'number - 1', params: [1], ret: '1', mode: 'toBe' },
   { id: 'array', params: [[0, 1, 2]], ret: '[0,1,2]', mode: 'toEqual' },
-  { id: 'object', params: [{ key: 'a01', value: 1 }], ret: '{"key":"a01","value":1}', mode: 'toStrictEqual' },
+  { id: 'object', params: [{ key: 'a01', value: 1 }], ret: '{"key":"a01","value":1}', mode: 'toEqual' },
 ];
 
 tests(fn, data);
