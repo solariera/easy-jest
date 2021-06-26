@@ -1,4 +1,45 @@
-import { Mode } from './types/mode';
+type Common<T extends (...args: any) => any> = {
+  id?: string;
+  params: [...Parameters<T>];
+};
+
+type ArrayMode = 'toContain' | 'not.toContain';
+export type ArrayCompare<T extends (...args: any) => any> = Common<T> & {
+  mode: ArrayMode;
+  ret: unknown;
+};
+
+type BooleanMode = 'toBeNull' | 'toBeUndefined' | 'toBeDefined' | 'toBeTruthy' | 'toBeFalsy';
+export type BooleanCompare<T extends (...args: any) => any> = Common<T> & {
+  mode: BooleanMode;
+  ret?: undefined;
+};
+
+type FloatMode = 'toBeCloseTo';
+export type FloatCompare<T extends (...args: any) => any> = Common<T> & {
+  mode: FloatMode;
+  ret: number;
+};
+
+type GeneralMode = 'toBe' | 'not.toBe' | 'toEqual' | 'not.toEqual';
+export type GeneralCompare<T extends (...args: any) => any> = Common<T> & {
+  mode?: GeneralMode;
+  ret: ReturnType<T>;
+};
+
+type NumberMode = 'toBeGreaterThan' | 'toBeGreaterThanOrEqual' | 'toBeLessThan' | 'toBeLessThanOrEqual';
+export type NumberCompare<T extends (...args: any) => any> = Common<T> & {
+  mode: NumberMode;
+  ret: number | bigint;
+};
+
+type StringMode = 'toMatch' | 'not.toMatch';
+export type StringCompare<T extends (...args: any) => any> = Common<T> & {
+  mode: StringMode;
+  ret: RegExp;
+};
+
+type Mode = ArrayMode | BooleanMode | FloatMode | GeneralMode | NumberMode | StringMode;
 
 /**
  * ut
@@ -18,9 +59,6 @@ const ut = <T extends (...args: any) => any>(
   ret?: unknown,
 ): void => {
   switch (mode) {
-    case 'toBeGreaterThan':
-      return test(description, () => expect(fn(...params)).toBeGreaterThan(ret as number | bigint));
-
     case 'toBeGreaterThan':
       return test(description, () => expect(fn(...params)).toBeGreaterThan(ret as number | bigint));
 
@@ -74,9 +112,6 @@ const ut = <T extends (...args: any) => any>(
 
     case 'not.toEqual':
       return test(description, () => expect(fn(...params)).not.toEqual(ret));
-
-    default:
-      return test(description, () => expect(fn(...params)).toBe(ret));
   }
 };
 

@@ -15,8 +15,13 @@ const fn = (situation?: string, option?: Options) => {
 
 const data: TestData<typeof fn>[] = [
   { params: [], ret: 'default' },
+  { id: 'toBe', mode: 'toBe', params: ['number', { number: 1 }], ret: 1 },
+  { id: 'not.toBe', mode: 'not.toBe', params: ['number', { number: 1 }], ret: 0 },
+  { id: 'toEqual', mode: 'toEqual', params: ['array', { array: [1] }], ret: [1] },
+  { id: 'not.toEqual', mode: 'not.toEqual', params: ['array', { array: [1] }], ret: [0] },
   { id: 'toBeNull', mode: 'toBeNull', params: ['null'] },
   { id: 'toBeUndefined', mode: 'toBeUndefined', params: ['undefined'] },
+  { id: 'toBeDefined', mode: 'toBeDefined', params: ['number', { number: 1 }] },
   { id: 'toBeTruthy', mode: 'toBeTruthy', params: ['truthy'] },
   { id: 'toBeFalsy', mode: 'toBeFalsy', params: ['falsy'] },
   { id: 'toBeGreaterThan', mode: 'toBeGreaterThan', params: ['number', { number: 1 }], ret: 0 },
