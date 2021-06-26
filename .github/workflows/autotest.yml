@@ -1,4 +1,4 @@
-name: Codecov Coverage
+name: Auto test
 on: [push]
 jobs:
   build-push-coverage:
@@ -9,14 +9,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '15.11.0'
-      - name: Generate coverage report
+      - name: test
         run: |
           yarn install
           yarn test
-      - name: Upload coverage
+      - name: Test result branch
         if: success()
-        run: |
-          curl -s https://codecov.io/bash | bash
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         shell: bash
