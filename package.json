@@ -10,7 +10,8 @@
   "homepage": "https://github.com/solariera/easy-jest#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solariera/easy-jest.git"
+    "url": "git+https://github.com/solariera/easy-jest.git",
+    "directory": "lib"
   },
   "bugs": {
     "url": "https://github.com/solariera/easy-jest/issues"
