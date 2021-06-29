@@ -1,6 +1,6 @@
 {
   "name": "@solariera/easy-jest",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Easy jest package with convertString",
   "author": "Solariera <always@solariera.com> (https://github.com/solariera)",
   "license": "MIT",
