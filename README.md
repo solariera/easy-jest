@@ -8,12 +8,12 @@ Easy jest package include convertString(s)
 
 ```console
 # npm
-npm -i -D @solariera/easy-jest
+npm install --save-dev @solariera/easy-jest
 ```
 
 ```console
 # yarn
-yarn add -D @solariera/easy-jest
+yarn add --dev @solariera/easy-jest
 ```
 
 ## 2. Easy Jest Tool
