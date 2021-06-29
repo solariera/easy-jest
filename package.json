@@ -10,8 +10,7 @@
   "homepage": "https://github.com/solariera/easy-jest#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solariera/easy-jest.git",
-    "directory": "lib"
+    "url": "git+https://github.com/solariera/easy-jest.git"
   },
   "bugs": {
     "url": "https://github.com/solariera/easy-jest/issues"
@@ -29,8 +28,10 @@
     "test:cov": "jest ---watch --coverage",
     "typesync": "typesync || :",
     "clean": "rm -rf lib/",
+    "lint": "eslint src/**/*.ts",
     "ts-declaration": "tsc --declaration --outDir lib",
     "build": "yarn ts-declaration",
+    "build:watch": "build --watch",
     "build:clean": "yarn clean && yarn ts-declaration ",
     "prepare": "yarn build"
   },
