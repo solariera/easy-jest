@@ -1,5 +1,5 @@
 import { tests, TestData } from '../tests';
-import { convertString as fn } from '.';
+import { convertString as fn } from '../convert-string';
 
 const data: TestData<typeof fn>[] = [
   { params: ['no id and no mode'], ret: 'no id and no mode' },

@@ -1,6 +1,13 @@
-import { tests, TestData } from '.';
+import { tests, TestData } from '../tests';
 
-type Options = { number?: number; string?: string; regexp?: RegExp; array?: unknown[] };
+type Options = {
+  number?: number;
+  string?: string;
+  regexp?: RegExp;
+  array?: unknown[];
+  object?: { [key in string]: unknown };
+};
+
 const fn = (situation?: string, option?: Options) => {
   if (situation === 'undefined') return undefined;
   if (situation === 'null') return null;
@@ -10,6 +17,7 @@ const fn = (situation?: string, option?: Options) => {
   if (situation === 'string') return option?.string;
   if (situation === 'regexp') return option?.regexp;
   if (situation === 'array') return option?.array;
+  if (situation === 'object') return option?.object;
   return 'default';
 };
 
@@ -19,6 +27,18 @@ const data: TestData<typeof fn>[] = [
   { id: 'not.toBe', mode: 'not.toBe', params: ['number', { number: 1 }], ret: 0 },
   { id: 'toEqual', mode: 'toEqual', params: ['array', { array: [1] }], ret: [1] },
   { id: 'not.toEqual', mode: 'not.toEqual', params: ['array', { array: [1] }], ret: [0] },
+  {
+    id: 'toStrictEqual',
+    mode: 'toStrictEqual',
+    params: ['object', { object: { key: 'value' } }],
+    ret: { key: 'value' },
+  },
+  {
+    id: 'not.toStrictEqual',
+    mode: 'not.toStrictEqual',
+    params: ['object', { object: { key: 'value' } }],
+    ret: { key: 'not value' },
+  },
   { id: 'toBeNull', mode: 'toBeNull', params: ['null'] },
   { id: 'toBeUndefined', mode: 'toBeUndefined', params: ['undefined'] },
   { id: 'toBeDefined', mode: 'toBeDefined', params: ['number', { number: 1 }] },

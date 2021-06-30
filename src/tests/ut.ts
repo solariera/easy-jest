@@ -71,6 +71,12 @@ const ut = <T extends (...args: any) => any>(
 
     case 'not.toEqual':
       return test(description, () => expect(fn(...params)).not.toEqual(ret));
+
+    case 'toStrictEqual':
+      return test(description, () => expect(fn(...params)).toStrictEqual(ret));
+
+    case 'not.toStrictEqual':
+      return test(description, () => expect(fn(...params)).not.toStrictEqual(ret));
   }
 };
 

@@ -1,8 +1,8 @@
-# Easy Jest Tool
+# Easy Jest
 
-Easy jest package include convertString(s)
+Easy jest package
 
-## 1. Common
+## 1. Usage
 
 ### 1-1. Installation
 
@@ -16,9 +16,7 @@ npm install --save-dev @solariera/easy-jest
 yarn add --dev @solariera/easy-jest
 ```
 
-## 2. Easy Jest Tool
-
-### 2-1. Usage
+### 1-2. Basic Usage
 
 ```typescript
 import { tests, TestData } from '@solariera/easy-jest';
@@ -38,7 +36,7 @@ const data: TestData<typeof fn>[] = [
 tests(fn, data);
 ```
 
-### 2-2. Result
+### 1-3. Result
 
 ```console
   ✓  1: undefined
@@ -56,6 +54,19 @@ test         : convertString
 @return type : string
 ```
 
+## 2. Specifications
+
+### 2-1. Syntax
+
+> tests(`fn` ,`data`)
+
+### 2-2. Parameters
+
+| No. | Name   | Type       | Description                   |
+| --- | ------ | ---------- | ----------------------------- |
+| 1   | `fn`   | Function   | The function you want to test |
+| 2   | `data` | TestData[] | Test data array               |
+
 ### 2-3. TestData Properties
 
 | Name   | Type             | Default | Description                  |
@@ -71,34 +82,9 @@ test         : convertString
 
 | Mode (Supported Methods)                                                        | Set for 'ret' type |
 | ------------------------------------------------------------------------------- | ------------------ |
-| `toBe` `not.toBe` `toEqual` `not.toEqual`                                       | ReturnType\<fn\>   |
+| `toBe` `not.toBe` `toEqual` `not.toEqual` `toStrictEqual` `not.toStrictEqual`   | ReturnType\<fn\>   |
 | `toBeNull` `toBeUndefined` `toBeDefined` `toBeTruthy` `toBeFalsy`               | undefined          |
 | `toBeGreaterThan` `toBeGreaterThanOrEqual` `toBeLessThan` `toBeLessThanOrEqual` | number \| bigint   |
 | `toBeCloseTo`                                                                   | number             |
 | `toMatch` `not.toMatch`                                                         | RegExp             |
 | `toContain` `not.toContain`                                                     | unknown            |
-
-## 3. Convert String(s) Function
-
-### 3-1. Usage
-
-```typescript
-import { convertString, convertStrings } from '@solariera/easy-jest/convert-string';
-
-console.log(convertString(null)); // 'null'
-console.log(convertString(false)); // 'false'
-console.log(convertString([null, undefined, 1])); // '["null", "undefined", "1"]'
-console.log(convertStrings([null, undefined, 1])); // ['null', 'undefined', '1']
-```
-
-### 3-2. Correspondence Table
-
-| Type      | Parameters               | ReturnValue               | Description                |
-| --------- | ------------------------ | ------------------------- | -------------------------- |
-| null      | null                     | 'null'                    | -                          |
-| undefined | undefined                | 'undefined'               | -                          |
-| string    | 'no change'              | 'no change'               | -                          |
-| number    | 123                      | '123'                     | -                          |
-| boolean   | true                     | 'true'                    | -                          |
-| array     | [1, 2, 3]                | '[1,2,3]'                 | Converted by JSON.stringfy |
-| object    | { key: 'a01', value: 1 } | '{"key":"a01","value":1}' | Converted by JSON.stringfy |
