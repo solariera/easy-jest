@@ -1,5 +1,9 @@
 # Easy Jest
 
+[![npm](https://img.shields.io/npm/v/@solariera/easy-jest)](https://www.npmjs.com/package/@solariera/easy-jest)
+[![npm](https://img.shields.io/npm/dw/@solariera/easy-jest)](https://www.npmjs.com/package/@solariera/easy-jest)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/@solariera/easy-jest)](https://bundlephobia.com/result?p=@solariera/easy-jest)
+
 Easy jest package
 
 ## 1. Usage
@@ -56,18 +60,16 @@ test         : convertString
 
 ## 2. Specifications
 
-### 2-1. Syntax
+### 2-1. Syntax & Parameters
 
-> tests(`fn` ,`data`)
+#### tests(`fn` ,`data`)
 
-### 2-2. Parameters
+| No. | Name   | Type       | Required | Description                   |
+| --- | ------ | ---------- | -------- | ----------------------------- |
+| 1   | `fn`   | Function   | Yes      | The function you want to test |
+| 2   | `data` | TestData[] | Yes      | Test data array               |
 
-| No. | Name   | Type       | Description                   |
-| --- | ------ | ---------- | ----------------------------- |
-| 1   | `fn`   | Function   | The function you want to test |
-| 2   | `data` | TestData[] | Test data array               |
-
-### 2-3. TestData Properties
+### 2-2. TestData Properties
 
 | Name   | Type             | Default | Description                  |
 | ------ | ---------------- | ------- | ---------------------------- |
@@ -78,7 +80,7 @@ test         : convertString
 
 \* see next section
 
-### 2-4. Matchers
+### 2-3. Matchers
 
 | Mode (Supported Methods)                                                        | Set for 'ret' type |
 | ------------------------------------------------------------------------------- | ------------------ |
